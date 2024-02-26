@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f2f2f2;
+    }
+    #signup-form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"], input[type="email"] {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div id="signup-form">
+    <h2>Signup Form</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="email" id="email" placeholder="Email">
+    <input type="submit" value="Sign Up" onclick="storeData()">
+</div>
+
+<script>
+    function storeData() {
+    var username = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
+
+    if (username && email) {
+        // Store data as an object in local storage
+        var userData = {
+            username: username,
+            email: email
+        };
+        localStorage.setItem("userData", JSON.stringify(userData)); // Store as JSON string
+        alert("Signup successful! Data stored.");
+    } else {
+        alert("Please fill in all fields.");
+    }
+}
+
+
+</script>
+</body>
+</html>
