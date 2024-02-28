@@ -1,0 +1,29 @@
+<?php
+$servername = "your_servername"; // replace with your mysql server name
+$username = "your_username"; // replace with your mysql username
+$password = "your_password"; // replace with your mysql password
+$dbname = "your_dbname"; // replace with your mysql database name
+
+// Create connection using MySQLi
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $formUsername = $_POST['username'];
+    $formPassword = $_POST['password'];
+
+    // Insert form data into the database
+    $sql = "INSERT INTO users (username, password) VALUES ('$formUsername', '$formPassword')";
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+$conn->close();
+?>
